@@ -1,5 +1,6 @@
 package co.ooci.keysender.keysendermod;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,10 +24,7 @@ public class Keysendermod {
     }
 
     public void sendPacketToServer(String str) {
-
-
         channel.sendToServer(new MessageFromClient(str));
-
     }
 
     public void registerMessages() {
@@ -43,7 +41,9 @@ public class Keysendermod {
 
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) {
-        sendPacketToServer("K" + event.getKey());
+        if (Minecraft.getInstance().level != null && Minecraft.getInstance().player != null) {
+            sendPacketToServer("K" + event.getKey());
+        }
     }
 
 }
