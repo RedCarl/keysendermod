@@ -18,7 +18,12 @@ public class Keysendermod {
     public SimpleChannel channel;
 
     public Keysendermod() {
-        channel = NetworkRegistry.newSimpleChannel(CHANNEL, () -> PROTOCOL_VERSION, (s) -> true, (s) -> true);
+        channel = NetworkRegistry.newSimpleChannel(
+                CHANNEL,
+                () -> PROTOCOL_VERSION,
+                (s) -> true,
+                (s) -> true
+        );
         registerMessages();
         MinecraftForge.EVENT_BUS.register(this);
     }
