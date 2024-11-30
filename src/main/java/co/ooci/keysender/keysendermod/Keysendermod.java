@@ -47,7 +47,7 @@ public class Keysendermod {
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) {
         if (Minecraft.getInstance().level != null && Minecraft.getInstance().player != null) {
-            sendPacketToServer("K" + event.getKey());
+            sendPacketToServer(String.valueOf(event.getKey()));
         }
     }
 
