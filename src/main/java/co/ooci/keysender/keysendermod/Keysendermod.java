@@ -42,7 +42,10 @@ public class Keysendermod {
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) {
         if (Minecraft.getInstance().level != null && Minecraft.getInstance().player != null) {
-            sendPacketToServer("K" + event.getKey());
+            // 检查是否没有打开任何界面
+            if (Minecraft.getInstance().screen == null) {
+                sendPacketToServer("K" + event.getKey());
+            }
         }
     }
 
